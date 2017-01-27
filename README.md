@@ -14,13 +14,15 @@ El nombre de la aplicación es: Christmas
 
 Objetivo
 ---
-Sacar fotos con la camara o legir fotos para enviarlas desde la galeeria y un recetario navidenio  .
+El objetivo de la aplicacion es poder seleccionar imagenes agregar texto y guardarlas  para  hacer ua tarjetita de felicitaciones Navidenias.
 
 Caracteristicas
 ---
-* Busca fotos de la galeria del celular.
+* Selecciona Imagenes que ya tiene caargada.
 * las visualiza en la aplicacion .
 * Tiene tipo de fuentes  especiales para navidad.
+* Segun el texto ingresado se  aniada a la imagen .
+* Guarda la imagen en la memoria del celular en la galeria para poder compartirla a las diferentes redes sociales o aplicaciones que se pueda enviar.
 
 Wireframes
 ---
@@ -71,13 +73,14 @@ En este proyecto de utilizáron los siguientes componentes tanto en el `diseño`
 * Button, para seleccionar , bsucar, cambiar opciones,cambiar de pantallas
 * EditTexts, para los titulos  , algunas indicaciones.
 * AlertDialog para hacer una lista pequenia de las cosas que necesitamos bsucar.
-* xmas.ttf ,Fuentes especiales para navidad.
+* Canvas para realizar los graficos.
+* Almacenamiento interno en la memoria del celular para poder visualizarlas en la galeria de fotos.
 .
 .
 .
 
 **`Funcionalidad:`**
-* Cuenta con la galeria de imagenes para elegir una foto par enviarla.
+* Cuenta con la galeria de imagenes para elegir una foto  que se ha guardado.
 * Ciclo de un spalsh par que tenga tiempo de cargar los componentes.
 .
 .
