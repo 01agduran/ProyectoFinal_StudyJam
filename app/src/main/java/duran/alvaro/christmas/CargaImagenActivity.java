@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -79,7 +80,7 @@ public class CargaImagenActivity extends AppCompatActivity {
     //BOTONESSSSSSSSSSSSSSSSS
     private Button addText;
     private Button saveImage;
-
+private ImageButton atras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,9 +89,11 @@ public class CargaImagenActivity extends AppCompatActivity {
         imagen = (ImageView) findViewById(R.id.iv_carga_imagen);
         addText = (Button) findViewById(R.id.btn_pone_texto);
         saveImage = (Button) findViewById(R.id.btn_guarda_imagen);
-        imagen.setVisibility(View.INVISIBLE);
+        atras=(ImageButton)findViewById(R.id.btn_atras);
+        imagen.setImageResource(R.drawable.christmas);
         saveImage.setVisibility(View.INVISIBLE);
         addText.setVisibility(View.INVISIBLE);
+        atras.setVisibility(View.INVISIBLE);
 
 
     }
@@ -259,6 +262,7 @@ public class CargaImagenActivity extends AppCompatActivity {
         imagen.setVisibility(View.VISIBLE);
         saveImage.setVisibility(View.VISIBLE);
         addText.setVisibility(View.VISIBLE);
+        atras.setVisibility(View.VISIBLE);
         int top_ima=imagenes.length;
         sw2=true;
         if(coun_imagenes2==top_ima-1&&sw)
@@ -281,6 +285,7 @@ public class CargaImagenActivity extends AppCompatActivity {
     }
     public void cambiaImagenAtras(View v)
     {sw=true;
+
 
             if (sw2)
             {

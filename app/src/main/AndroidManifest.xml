@@ -22,9 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".OpcionesActivity" />
         <activity android:name=".CargaImagenActivity" />
-        <activity android:name=".RecetasActivity"></activity>
     </application>
 
 </manifest>

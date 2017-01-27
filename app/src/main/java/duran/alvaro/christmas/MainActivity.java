@@ -26,21 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
    }
 
-    public void CambiaOpciones(View v)
-    {
-        try {
-            Intent cambia= new Intent(getApplicationContext(),OpcionesActivity.class);
-            startActivity(cambia);
-        }
-        catch (Exception e)
-        {
-            e.getMessage();
-            System.out.println(e.getMessage().toString());
-        }
 
-
-
-    }
 
     public  void reseta_picana(View v)
     {
