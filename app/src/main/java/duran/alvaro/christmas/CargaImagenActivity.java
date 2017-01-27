@@ -8,44 +8,27 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.icu.text.DateFormat;
-import android.icu.text.SimpleDateFormat;
-import android.icu.text.TimeZoneFormat;
-import android.icu.util.TimeZone;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.security.AccessController;
-import java.security.Timestamp;
-import java.sql.Time;
 import java.util.Calendar;
-import java.util.Date;
 
 public class CargaImagenActivity extends AppCompatActivity {
     private static final int ACTIVITY_SELECT_IMAGE = 1020;
@@ -59,8 +42,6 @@ public class CargaImagenActivity extends AppCompatActivity {
     private ImageView imagen;
     boolean sw=true,sw2=true;
 
-//    private Button BtnSiguiente;
-//    private Button BtnAtras;
 
     private TextView Mensaje;
     private EditText Texto;
@@ -114,50 +95,10 @@ public class CargaImagenActivity extends AppCompatActivity {
 
     }
 
-    public void cargaImagen(View v) {
 
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        startActivityForResult(intent, ACTIVITY_SELECT_IMAGE);
-    }
 
-    public void cargaImagen2(View v) {
-        final CharSequence[] opciones = {"Tomar Foto", "Elegir de Galeria", "Cancelar"};
-        final AlertDialog.Builder builder = new AlertDialog.Builder(CargaImagenActivity.this);
-        builder.setTitle("Elige una opcion");
-        builder.setItems(opciones, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int seleccion) {
-                if (opciones[seleccion] == "Tomar Foto") {
-                    abrirCamara();
-                } else {
-                    if (opciones[seleccion] == "Elegir de Galeria") {
-                        Intent intentca = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        intentca.setType("image/*");
-                        startActivityForResult(intentca.createChooser(intentca, "Selecciona una imagen"), SELECT_PICTURE);
 
-                    } else {
-                        if (opciones[seleccion] == "Cancelar") {
-                            dialog.dismiss();
 
-                        }
-                    }
-                }
-            }
-        });
-        builder.show();
-    }
-
-    private void abrirCamara() {
-        File file = new File(Environment.getExternalStorageDirectory(), MEDIA_DIRECTORY);
-        file.mkdirs();
-        String path = Environment.getExternalStorageDirectory() + File.separator + MEDIA_DIRECTORY + File.separator + TEMPORAL_PICTURE_NAME;
-        File newfile = new File(path);
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(newfile));
-        startActivityForResult(intent, PHOTO_CODE);
-
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -217,22 +158,7 @@ public class CargaImagenActivity extends AppCompatActivity {
         alert.setPositiveButton(getResources().getString(R.string.add), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 String str = edittext.getText().toString();
-
-//AQUI ES EL PRIMER METODO PARA  GUARDAR LA IMAGEN CON  EL TEXTO ********************************************
-//        View v = new CanvasWithText(getApplicationContext(), str);
-//        Bitmap bitmap = Bitmap.createBitmap(500/*width*/, 500/*height*/, Bitmap.Config.ARGB_8888);
-//
-//        Canvas canvas = new Canvas(bitmap);
-//        v.draw(canvas);
-//        imagen=(ImageView)findViewById(R.id.iv_carga_imagen);
-//        b = bitmap;     //for saving "b" to the sdcard
-//        imagen.setImageBitmap(bitmap);
-//***********************************************************************************************************
-
-//SEGUNDO METODO **********************************************************************************
-
                 Bitmap bm = BitmapFactory.decodeResource(getResources(), imagenes[coun_imagenes]);
-                //  Bitmap bm = ((BitmapFactory.decodeResource(getResources(),imagen.getDrawable()).getBitmap());
                 Bitmap.Config config = bm.getConfig();
                 int width = bm.getWidth();
                 int height = bm.getHeight();
@@ -242,61 +168,30 @@ public class CargaImagenActivity extends AppCompatActivity {
                 Paint paint = new Paint();
                 paint.setColor(Color.WHITE);
                 paint.setStyle(Paint.Style.FILL);
-                paint.setTextSize(100);
-                c.drawText(str, 250, 150, paint);
+                paint.setTextSize(80);
+
+                int tam_cadena=str.length();
+                if (tam_cadena>27)
+                {
+                    int con_esp_y=100;
+                    int cont_cad=0;
+                    int div=tam_cadena/27;
+                    for (int a=1;a<=div;a++)
+                    {
+                        String tem=str.substring(cont_cad,cont_cad+27);
+                        c.drawText(tem, 0, con_esp_y, paint);
+                        con_esp_y=con_esp_y+100;
+                        cont_cad=cont_cad+27;
+                        if (a==div)
+                        {
+                             tem=str.substring(cont_cad,str.length());
+                            c.drawText(tem, 0, con_esp_y, paint);
+                        }
+                    }
+                }
                 b = newImage;
                 imagen.setImageBitmap(newImage);
 //*********************************************************************************************************
-            }
-        });
-        alert.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                dialog.dismiss();
-            }
-        });
-
-        alert.show();
-    }
-
-    public void poneTexto2(View v) {
-
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.picana);
-        Bitmap.Config config = bm.getConfig();
-        int width = bm.getWidth();
-        int height = bm.getHeight();
-        Bitmap newImage = Bitmap.createBitmap(width, height, config);
-        Canvas canvas = new Canvas(newImage);
-        canvas.drawBitmap(bm, 0, 0, null);
-        Paint paint = new Paint();
-        paint.setColor(Color.RED);
-        paint.setStyle(Paint.Style.FILL);
-        paint.setTextSize(20);
-        canvas.drawText("Some Text", 0, 25, paint);
-        imagen.setImageBitmap(newImage);
-    }
-
-    public void poneTexto3(View v) {
-        final Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.picana);
-        android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(CargaImagenActivity.this);
-        final EditText edittext = new EditText(CargaImagenActivity.this);
-
-        alert.setTitle(getResources().getString(R.string.act_canvas_demo));
-        alert.setMessage(getResources().getString(R.string.str_add_text));
-
-        alert.setView(edittext);
-        alert.setPositiveButton(getResources().getString(R.string.add), new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                String str = edittext.getText().toString();
-                View v = new CanvasWithText(getApplicationContext(), str);
-                Bitmap bitmap = Bitmap.createBitmap(500/*width*/, 500/*height*/, Bitmap.Config.ARGB_8888);
-                Canvas canvas = new Canvas(bitmap);
-                canvas.drawBitmap(bm, 0, 0, null);
-                v.draw(canvas);
-                Paint paint = new Paint();
-                paint.setColor(Color.RED);
-                paint.setStyle(Paint.Style.FILL);
-                paint.setTextSize(20);
-                //     canvas.drawText(str, 0, 25, paint);
             }
         });
         alert.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
@@ -321,7 +216,7 @@ public class CargaImagenActivity extends AppCompatActivity {
 //
 
         //    final File dir = new File(Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name));
-        final File dir = new File(Environment.getExternalStorageDirectory() + File.separator + "AAAAAAA");
+        final File dir = new File(Environment.getExternalStorageDirectory() + File.separator + "AlvaroDuran");
         if (!dir.exists()) {
             dir.mkdirs();
         }
@@ -405,76 +300,4 @@ public class CargaImagenActivity extends AppCompatActivity {
      }
 
 
-
-    public void cambiarImagen(View v) {
-        coun_imagenes=1;
-                switch (coun_imagenes) {
-            case 1:
-                Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.n02);
-                //  Bitmap bm = ((BitmapFactory.decodeResource(getResources(),imagen.getDrawable()).getBitmap());
-
-                Bitmap.Config config = bm.getConfig();
-                int width = bm.getWidth();
-                int height = bm.getHeight();
-//                Matrix matrix = new Matrix();
-//                matrix.postScale(width, height);
-                Bitmap newImage = Bitmap.createBitmap(300 , 300, Bitmap.Config.ARGB_8888);
-                //Bitmap newImage = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true);
-                Canvas c = new Canvas(newImage);
-                c.drawBitmap(bm, 0, 0, null);
-                Paint paint = new Paint();
-                paint.setColor(Color.WHITE);
-                paint.setStyle(Paint.Style.FILL);
-                paint.setTextSize(100);
-             //   c.drawText(str, 250, 150, paint);
-                b = newImage;
-              //  imagen.setImageBitmap(newImage);
-                imagen.setImageResource(R.drawable.n03);
-
-                coun_imagenes++;
-                break;
-            case 2:
-                 bm = BitmapFactory.decodeResource(getResources(), R.drawable.n02);
-                //  Bitmap bm = ((BitmapFactory.decodeResource(getResources(),imagen.getDrawable()).getBitmap());
-
-                config = bm.getConfig();
-                width = bm.getWidth();
-                height = bm.getHeight();
-                newImage = Bitmap.createBitmap(2000 , 2000, Bitmap.Config.ARGB_8888);
-                c = new Canvas(newImage);
-                c.drawBitmap(bm, 0, 0, null);
-                paint = new Paint();
-                paint.setColor(Color.WHITE);
-                paint.setStyle(Paint.Style.FILL);
-                paint.setTextSize(100);
-                //   c.drawText(str, 250, 150, paint);
-                b = newImage;
-                imagen.setImageBitmap(newImage);
-                coun_imagenes++;
-                break;
-//            case 3:
-//
-//                imagen.setImageResource(R.drawable.f04);
-//                c++;
-//                break;
-//            case 4:
-//
-//                imagen.setImageResource(R.drawable.n04);
-//                c++;
-//                break;
-            default:
-                imagen.setImageDrawable(null);
-                break;
-
-
-        }
-
-
-         // imagen.setImageResource(R.drawable.f01);
-
-
-
-
-
-    }
 }
