@@ -9,43 +9,102 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="duran.alvaro.christmas.CargaImagenActivity"
+    android:orientation="vertical"
+    android:background="@drawable/f04"
+    >
 
-    android:orientation="vertical">
-
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_titulo_picana"
-        android:text="Picana"
+        android:orientation="horizontal"
+
+        >
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_skip_previous_black_24dp"
+            android:onClick="cambiaImagenAtras"
+            android:id="@+id/btn_atras"
+            android:background="#1e88e5"
+            android:layout_marginRight="120dp"
+            android:drawableLeft="@drawable/ic_skip_previous_black_24dp"
+            android:text="Atras"
+
+
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:id="@+id/btn_siguiente_imagen"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:onClick="cambiaImagenSiguiente"
+
+
+            android:background="#1e88e5"
+            android:src="@drawable/ic_skip_next_black_24dp"
+              android:text="SIGUIENTE"
+            android:textColor="#ffffff"
+
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" ESCRIBIR TEXTO"
+        android:onClick="poneTexto"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:id="@+id/btn_pone_texto"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:background="#0d47a1"
+        android:layout_marginTop="15dp"
+
+
         />
 
 
+    <ImageView
 
-   <ScrollView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:layout_alignParentTop="true"
-       android:layout_alignParentLeft="true"
-       android:layout_alignParentStart="true">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/iv_carga_imagen"
+        android:layout_weight="1"
+        android:src="@drawable/picana"
+
+        />
 
 
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical" >
-          <ImageView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:src="@drawable/picana"
-              />
-          <EditText
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="jfhfjfjfjfjfjfjfj"
-              android:textAlignment="center"
-              />
-       </LinearLayout>
-   </ScrollView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GUARDAR"
+        android:onClick="guardaImagen"
+        android:textAlignment="center"
+        android:id="@+id/btn_guarda_imagen"
+        android:background="#133ea1"
+        android:textColor="#ffffff"
+
+        />
+
+    <!--<TextView-->
+        <!--android:id="@+id/myImageViewText"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignLeft="@id/iv_carga_imagen"-->
+        <!--android:layout_alignRight="@id/iv_carga_imagen"-->
+        <!--android:layout_alignBottom="@id/iv_carga_imagen"-->
+        <!--android:gravity="center"-->
+        <!--android:text="Hello"-->
+        <!--android:textColor="#ffffff"-->
+        <!--android:layout_marginLeft="1dp"-->
+        <!--android:layout_marginRight="1dp"-->
+        <!--android:layout_marginBottom="1dp"-->
+        <!--android:layout_alignParentTop="true" />-->
+
+
 </LinearLayout>

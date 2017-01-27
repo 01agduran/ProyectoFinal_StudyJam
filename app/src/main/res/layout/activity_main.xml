@@ -35,11 +35,14 @@
     android:layout_height="wrap_content"
     android:src="@drawable/picana"
     android:onClick="reseta_picana"
+    android:layout_weight="1"
     />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/paneton"
+
             />
         <Button
             android:layout_width="match_parent"

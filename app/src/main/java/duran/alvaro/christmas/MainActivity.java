@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         Typeface tf_bold=Typeface.createFromAsset(getAssets(),"fonts/xmas.ttf");
         tvNombre.setTypeface(tf_bold);
         tvNombre.setText("Feliz Navidad!!!");
-        BtnCambiar=(Button)findViewById(R.id.btn_selecciona_imagen);
+      //  BtnCambiar=(Button)findViewById(R.id.btn_carga_imagen);
 
    }
 
