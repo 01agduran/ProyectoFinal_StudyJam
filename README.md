@@ -14,21 +14,21 @@ El nombre de la aplicación es: Christmas
 
 Objetivo
 ---
-El objetivo de la aplicacion es poder seleccionar imagenes agregar texto y guardarlas  para  hacer ua tarjetita de felicitaciones Navidenias.
+El objetivo de la aplicacion es  realizar tarjetita de felicitaciones Navideniaspoder a partir de imagenes que se  agregar texto y se las guarda.
 
 Caracteristicas
 ---
-* Selecciona Imagenes que ya tiene caargada.
-* las visualiza en la aplicacion .
+* Selecciona Imagenes que ya tiene cargada.
+* las visualiza en la aplicacion.
 * Tiene tipo de fuentes  especiales para navidad.
-* Segun el texto ingresado se  aniada a la imagen .
+* Se coloca el texto combinando a la imagen seleccionada.
 * Guarda la imagen en la memoria del celular en la galeria para poder compartirla a las diferentes redes sociales o aplicaciones que se pueda enviar.
 
 Wireframes
 ---
 Puedes visualizar los Wireframes de este proyecto.
 
-https://ninjamock.com/s/HHDDEE
+https://ninjamock.com/s/1DJ7G
 
 Compatibilidad
 ---
