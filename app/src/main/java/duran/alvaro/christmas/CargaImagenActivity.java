@@ -188,10 +188,16 @@ private ImageButton atras;
                         if (a==div)
                         {
                              tem=str.substring(cont_cad,str.length());
-                            c.drawText(tem, 0, con_esp_y, paint);
+                            c.drawText(tem, 20, con_esp_y, paint);
                         }
                     }
                 }
+                else
+                {
+
+                    c.drawText(str, 0, 100, paint);
+                }
+
                 b = newImage;
                 imagen.setImageBitmap(newImage);
 //*********************************************************************************************************

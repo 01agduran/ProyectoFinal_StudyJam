@@ -54,9 +54,9 @@ Aca te muestro cual es el funcionamiento de mi aplicación a grandes rasgos.
     <center>
         <table border="0">
             <tr>
-                <td><img src="https://github.com/Gusn8/StudyJam_II_CustomListViews/blob/master/img/captura.gif" width="250"></td>
-                <td><img src="https://github.com/Gusn8/StudyJam_II_Animations/raw/master/img/corrida_02.gif" width="250"></td>
-                <td><img src="https://github.com/Gusn8/StudyJam_II_Intents/raw/master/img/corrida_02.gif" width="250"></td>
+                <td><img src="/img/gif01.gif" width="250"></td>
+                <td><img src="/img/gif02.gif" width="250"></td>
+                <td><img src="/img/gif03.gif" width="250"></td>
             </tr>
         </table>
     </center>
